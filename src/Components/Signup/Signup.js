@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleLogo from "../../Assets/Image/google.svg";
 import facebook from "../../Assets/Image/facebook.png"
 
-import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup ,onAuthStateChanged} from "firebase/auth";
 import app from "../../firebase.init";
 import toast from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
-const auth = getAuth(app);
-
 const Signup = () => {
+  const auth = getAuth(app);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      onAuthStateChanged(auth, async (user) => {
+        if (user && user.uid) {
+           (navigate('/'))
+          await toast.success("You are already logged in", { id: 'ok' })
+        }
+      });
+    };
+  
+    checkUser();
+  }, []);
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [confirmPassword, setConfirmPassword] = useState('');
