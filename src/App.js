@@ -9,6 +9,8 @@ import Navbar from "./Components/Navbar/Navbar";
 import Signup from "./Components/Signup/Signup";
 import NotFound from "./Components/NotFound/NotFound";
 import { Toaster } from 'react-hot-toast';
+import ResetPassword from "./Components/ResetPassword/ResetPassword"
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 
 function App() {
  
@@ -24,6 +26,8 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/chatbot' element={<Home />} />
         <Route path='/emailGenerator' element={<Email />} />
+        <Route path='/forgotpassword' element={<ForgotPassword />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 
