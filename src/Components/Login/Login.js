@@ -16,12 +16,12 @@ const Login = () => {
     const checkUser = async () => {
       onAuthStateChanged(auth, async (user) => {
         if (user && user.uid) {
-           (navigate('/'))
+          (navigate('/'))
           await toast.success("You are already logged in", { id: 'ok' })
         }
       });
     };
-  
+
     checkUser();
   }, []);
   const googleProvider = new GoogleAuthProvider();
@@ -81,6 +81,9 @@ const Login = () => {
               <input type='password' name='password' id='password' />
             </div>
           </div>
+          <p className='redirect pull-right'>
+            <span onClick={() => navigate("/forgotpassword")}>Forgot Password?</span>
+          </p>
           <button type='submit' className='auth-form-submit'>
             Login
           </button>
@@ -89,6 +92,7 @@ const Login = () => {
           New User?{" "}
           <span onClick={() => navigate("/signup")}>Create New Account</span>
         </p>
+
         <div className='horizontal-divider'>
           <div className='line-left' />
           <p>or</p>
