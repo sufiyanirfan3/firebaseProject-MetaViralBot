@@ -94,12 +94,12 @@ const Login = () => {
           <p>or</p>
           <div className='line-right' />
         </div>
-        <div className='input-wrapper'>
+        {/* <div className='input-wrapper'>
           <button className='google-auth' onClick={googleAuth}>
             <img src={GoogleLogo} alt='' />
             <p> Continue with Google </p>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
